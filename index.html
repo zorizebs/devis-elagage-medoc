@@ -235,11 +235,14 @@
         <label for="projet">Description de votre projet</label>
         <textarea id="projet" name="projet" rows="5" required></textarea>
       </div>
-      <!-- RGPD : case non cochée par défaut, consentement obligatoire -->
-      <div class="consentement">
-        <input id="rgpd" name="consentement" type="checkbox" required>
-        <label for="rgpd">J'accepte que mes informations soient utilisées pour être recontacté au sujet de ma demande de devis. [Texte RGPD à faire valider : responsable du traitement, durée de conservation, droits d'accès et de suppression, lien vers la politique de confidentialité.]</label>
-      </div>
+    <!-- RGPD : case non cochée par défaut, consentement obligatoire -->
+<div class="consentement">
+  <input id="rgpd" name="consentement" type="checkbox" required>
+  <label for="rgpd">J'accepte que mes informations (prénom, nom, téléphone, description du projet) soient transmises à un artisan élagueur partenaire indépendant afin qu'il me recontacte au sujet de ma demande de devis.</label>
+</div>
+<p class="info-rgpd" style="font-size:0.85rem;opacity:0.85;margin-top:8px;">
+  Les données collectées par [VOTRE NOM OU DÉNOMINATION], responsable du traitement, servent uniquement à vous mettre en relation avec un artisan partenaire. Elles sont conservées [DURÉE, par exemple 12 mois] puis supprimées. Vous disposez de droits d'accès, de rectification, d'effacement, d'opposition et de limitation, que vous pouvez exercer à l'adresse [VOTRE E-MAIL DE CONTACT]. Vous pouvez retirer votre consentement à tout moment. Plus d'informations dans notre <a href="politique-confidentialite.html">politique de confidentialité</a>.
+</p>
       <button type="submit">Envoyer ma demande</button>
     </form>
   </div>
