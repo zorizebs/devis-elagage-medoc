@@ -1,0 +1,317 @@
+/* =========================================================
+   Feuille de style du modèle "site vitrine artisan"
+   ---------------------------------------------------------
+   Pour dupliquer le site pour un autre métier :
+   changez seulement les couleurs dans :root ci-dessous.
+   Le design est pensé "mobile d'abord" : les règles de base
+   visent le téléphone, et les écrans plus larges s'adaptent
+   tout seuls grâce à flex-wrap.
+   ========================================================= */
+
+/* ---------- 1. Couleurs et polices (à personnaliser) ---------- */
+:root {
+  --vert-fonce: #17372B;      /* texte principal, fonds sombres */
+  --vert-tres-fonce: #10281F; /* pied de page */
+  --vert-moyen: #2F5D46;      /* icônes, survol des liens */
+  --vert-placeholder: #2F4A3B;
+  --ambre: #E8A33D;           /* boutons d'appel à l'action */
+  --ambre-fonce: #C27F1F;     /* chiffres des étapes */
+  --fond: #F4F6F2;            /* fond de page */
+  --fond-alterne: #E6ECE7;    /* sections une sur deux */
+  --blanc: #FFFFFF;
+  --texte-doux: #4A5A52;      /* paragraphes secondaires */
+  --texte-clair: #D5E2DA;     /* texte sur fond sombre */
+  --texte-pied: #C9D9CF;
+  --bordure: #D3DDD6;
+  --bordure-champ: #7E9686;
+
+  --police-titre: 'Bricolage Grotesque', sans-serif;
+  --police-texte: 'Manrope', system-ui, sans-serif;
+
+  --marge-cote: clamp(20px, 5vw, 64px); /* marge gauche/droite */
+  --largeur-max: 1152px;
+}
+
+/* ---------- 2. Bases ---------- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--police-texte);
+  background: var(--fond);
+  color: var(--vert-fonce);
+}
+
+a { color: var(--vert-fonce); }
+a:hover { color: var(--vert-moyen); }
+
+/* Contour bien visible pour la navigation au clavier */
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--ambre);
+  outline-offset: 2px;
+}
+
+h1, h2, h3 { margin: 0; font-family: var(--police-titre); }
+h2 { font-weight: 700; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; }
+h3 { font-size: 21px; }
+p { margin: 0; line-height: 1.6; }
+
+/* ---------- 3. Mise en page commune ---------- */
+.section { padding: 72px var(--marge-cote); }
+.section--alterne { background: var(--fond-alterne); }
+.section--sombre { background: var(--vert-fonce); color: var(--blanc); }
+
+/* Conteneur centré, largeur limitée */
+.conteneur {
+  max-width: var(--largeur-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* En-tête de section : titre + phrase d'intro */
+.intro { display: flex; flex-direction: column; gap: 12px; max-width: 640px; }
+.intro p { font-size: 17px; color: var(--texte-doux); }
+
+/* Grille souple : les cartes passent à la ligne sur mobile */
+.grille { display: flex; flex-wrap: wrap; gap: 20px; }
+
+/* ---------- 4. Boutons ---------- */
+.bouton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 28px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 17px;
+  text-decoration: none;
+}
+.bouton--ambre { background: var(--ambre); color: var(--vert-fonce); }
+.bouton--ambre:hover { color: var(--vert-fonce); }
+.bouton--contour { border: 2px solid var(--texte-clair); color: var(--blanc); font-weight: 600; }
+.bouton--contour:hover { color: var(--blanc); }
+
+/* ---------- 5. En-tête du site ---------- */
+.entete {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px var(--marge-cote);
+  border-bottom: 1px solid var(--bordure);
+}
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo span { font-family: var(--police-titre); font-weight: 700; font-size: 22px; }
+.menu { display: flex; flex-wrap: wrap; gap: 6px 24px; font-weight: 600; font-size: 15px; }
+.menu a { text-decoration: none; padding: 10px 0; }
+.entete .bouton { min-height: 48px; padding: 0 22px; font-size: 16px; }
+
+/* ---------- 6. Bandeau d'accueil ---------- */
+.accueil__contenu {
+  max-width: var(--largeur-max);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 48px;
+}
+.accueil__texte { flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
+.surtitre {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ambre);
+}
+.accueil h1 { font-weight: 800; font-size: clamp(36px, 5vw, 60px); line-height: 1.08; }
+.accueil__chapo { font-size: 18px; color: var(--texte-clair); max-width: 560px; }
+.boutons { display: flex; flex-wrap: wrap; gap: 14px; }
+.atouts {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  font-size: 15px;
+  color: var(--texte-clair);
+}
+.atouts li { display: flex; align-items: center; gap: 8px; }
+
+/* ---------- 7. Emplacements photo (à remplacer par de vraies photos) ---------- */
+.photo-attente {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 260px;
+  padding: 20px;
+  background: var(--bordure);
+  border: 2px dashed var(--bordure-champ);
+  border-radius: 14px;
+  color: var(--vert-placeholder);
+  text-align: center;
+  font-weight: 600;
+}
+.photo-attente--accueil {
+  flex: 1 1 360px;
+  min-width: 0;
+  min-height: 380px;
+  gap: 12px;
+  padding: 24px;
+  background: var(--vert-moyen);
+  border-color: #8FB09C;
+  border-radius: 16px;
+  color: var(--texte-clair);
+}
+.photo-attente--accueil strong { font-size: 16px; }
+.photo-attente--accueil small { font-size: 14px; font-weight: 400; max-width: 280px; }
+
+/* Photo principale du bandeau d'accueil (recadrée en 4:3) */
+.photo-accueil {
+  flex: 1 1 360px;
+  min-width: 0;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* ---------- 8. Cartes de services ---------- */
+.carte {
+  flex: 1 1 320px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px;
+  background: var(--blanc);
+  border: 1px solid var(--bordure);
+  border-radius: 14px;
+}
+.carte p { color: var(--texte-doux); }
+
+/* ---------- 9. Réalisations ---------- */
+/* Grille de photos : colonnes de même largeur qui se partagent toute la place
+   (1 colonne sur mobile, puis autant que de photos sur grand écran) */
+.grille-photos { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.realisation { min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.realisation img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 14px;
+  background: var(--bordure); /* couleur affichée pendant le chargement */
+}
+.realisation figcaption { font-size: 15px; color: var(--texte-doux); }
+
+/* ---------- 10. Étapes ---------- */
+.etape { flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 10px; padding: 8px 0; }
+.etape__numero { font-family: var(--police-titre); font-weight: 800; font-size: 44px; color: var(--ambre-fonce); }
+.etape p { color: var(--texte-doux); }
+
+/* ---------- 11. Zone d'intervention ---------- */
+.zone { padding-top: 56px; padding-bottom: 56px; }
+.zone .conteneur { gap: 20px; }
+.zone h2 { font-size: clamp(26px, 3vw, 34px); }
+.zone p { font-size: 17px; color: var(--texte-doux); max-width: 680px; }
+.communes { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+.communes li {
+  padding: 10px 18px;
+  background: var(--blanc);
+  border: 1px solid #C3D0C7;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* ---------- 12. Avis clients ---------- */
+.avis .conteneur { gap: 28px; }
+.avis__attente {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 32px;
+  background: var(--blanc);
+  border: 2px dashed #9DB0A4;
+  border-radius: 14px;
+}
+.avis__attente strong { font-size: 18px; }
+.avis__attente p { color: var(--texte-doux); max-width: 680px; }
+
+/* ---------- 13. Formulaire de devis ---------- */
+.devis__contenu { max-width: var(--largeur-max); margin: 0 auto; display: flex; flex-wrap: wrap; gap: 48px; }
+.devis__texte { flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
+.devis__texte p { font-size: 17px; color: var(--texte-clair); }
+.devis__texte .bouton { width: fit-content; padding: 0 24px; font-size: 18px; }
+
+.formulaire {
+  flex: 1 1 440px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 32px;
+  background: var(--blanc);
+  color: var(--vert-fonce);
+  border-radius: 16px;
+}
+.formulaire__ligne { display: flex; flex-wrap: wrap; gap: 18px; }
+.champ { flex: 1 1 200px; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.champ label { font-weight: 700; font-size: 15px; }
+.champ input,
+.champ textarea {
+  width: 100%;
+  padding: 0 14px;
+  font-size: 16px; /* 16px minimum : évite le zoom automatique sur iPhone */
+  font-family: inherit;
+  border: 1.5px solid var(--bordure-champ);
+  border-radius: 8px;
+  background: var(--blanc);
+  color: var(--vert-fonce);
+}
+.champ input { height: 48px; }
+.champ textarea { padding: 12px 14px; resize: vertical; }
+
+.consentement { display: flex; align-items: flex-start; gap: 12px; }
+.consentement input { width: 22px; height: 22px; margin: 2px 0 0; flex: none; }
+.consentement label { font-size: 14px; line-height: 1.5; color: var(--texte-doux); }
+
+.formulaire button {
+  min-height: 54px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--ambre);
+  color: var(--vert-fonce);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+/* ---------- 14. Pied de page ---------- */
+.pied { padding: 36px var(--marge-cote); background: var(--vert-tres-fonce); color: var(--texte-pied); }
+.pied__contenu {
+  max-width: var(--largeur-max);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 14px;
+}
+.pied nav { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.pied a { color: var(--texte-pied); }
+.pied a:hover { color: var(--blanc); }
